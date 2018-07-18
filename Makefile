@@ -1,7 +1,7 @@
 PWD:= $(shell pwd -L)
-DOCKER_RUN:= docker run -it --rm -v "${PWD}":/app microsoft/aspnetcore-build
+DOCKER_RUN:= docker run -it -v "${PWD}":/app -w /app microsoft/aspnetcore-build /bin/bash
 
 .PHONY: test
 
-dot-net:
-	- ${DOCKER_RUN} "cd app; ls"
+run:
+	- ${DOCKER_RUN}
